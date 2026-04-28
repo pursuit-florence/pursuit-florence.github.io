@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Florence Ernestina Osei — Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #e8e5df;
+    --surface: #ffffff;
+    --border: #c8c4bb;
+    --border-light: #d8d4cc;
+    --text: #0f0e0c;
+    --text-muted: #3a3834;
+    --text-faint: #6a6860;
+    --accent: #0f3070;
+    --accent-light: #dde6f5;
+    --accent-mid: #1f50a8;
+    --success: #0a5040;
+    --success-light: #d8ede8;
+    --warning-bg: #faecd8;
+    --warning-txt: #5a3008;
+    --mono: 'DM Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .page-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .page-label::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--border);
+  }
+
+  .resume {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  .top {
+    padding: 32px 36px 24px;
+    border-bottom: 0.5px solid var(--border);
+    position: relative;
+  }
+
+  .top::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+  }
+
+  .name {
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: -.02em;
+    margin-bottom: 4px;
+    color: var(--text);
+  }
+
+  .headline {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+    font-weight: 300;
+    letter-spacing: .01em;
+  }
+
+  .contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: var(--mono);
+  }
+
+  .contacts a {
+    color: var(--accent-mid);
+    text-decoration: none;
+  }
+
+  .contacts a:hover { text-decoration: underline; }
+
+  .sep {
+    color: var(--border);
+    font-size: 14px;
+  }
+
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+  }
+
+  .main {
+    padding: 24px 36px;
+    border-right: 0.5px solid var(--border);
+  }
+
+  .aside {
+    padding: 24px 20px;
+    background: #f0ede6;
+  }
+
+  .sec {
+    margin-bottom: 20px;
+  }
+
+  .sec:last-child { margin-bottom: 0; }
+
+  .sec-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    border-bottom: 0.5px solid var(--border-light);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+  }
+
+  .profile {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  .hint {
+    font-size: 11px;
+    color: var(--text-faint);
+    font-family: var(--mono);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .hint::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent-mid);
+    flex-shrink: 0;
+  }
+
+  .job {
+    border: 0.5px solid var(--border-light);
+    border-radius: 8px;
+    margin-bottom: 6px;
+    overflow: hidden;
+    transition: border-color .2s;
+  }
+
+  .job:last-child { margin-bottom: 0; }
+  .job:hover { border-color: var(--border); }
+  .job.open { border-color: var(--accent-mid); }
+
+  .job-top {
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: background .15s;
+    user-select: none;
+  }
+
+  .job-top:hover { background: #f8f7f4; }
+  .job.open .job-top { background: var(--accent-light); }
+
+  .r1 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 2px;
+  }
+
+  .job-role {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--text);
+    flex: 1;
+  }
+
+  .job.open .job-role { color: var(--accent); }
+
+  .badge {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 1px 7px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .badge-ft { background: var(--accent-light); color: var(--accent); }
+  .badge-ct { background: var(--warning-bg); color: var(--warning-txt); }
+
+  .job-dates {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-faint);
+    white-space: nowrap;
+  }
+
+  .job.open .job-dates { color: var(--accent-mid); }
+
+  .chev {
+    font-size: 9px;
+    color: var(--text-faint);
+    transition: transform .2s;
+    flex-shrink: 0;
+  }
+
+  .job.open .chev { transform: rotate(180deg); color: var(--accent-mid); }
+
+  .r2 { display: flex; align-items: center; }
+
+  .job-co {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  .job-co a {
+    color: var(--text-muted);
+    text-decoration: none;
+    border-bottom: 0.5px solid var(--border);
+    transition: color .15s, border-color .15s;
+  }
+
+  .job-co a:hover {
+    color: var(--accent-mid);
+    border-bottom-color: var(--accent-mid);
+  }
+
+  .job.open .job-co a {
+    color: var(--accent-mid);
+    border-bottom-color: var(--accent-mid);
+  }
+
+  .job.open .job-co { color: var(--accent-mid); }
+
+  .job-summary {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    padding: 7px 14px 9px;
+    border-top: 0.5px dashed var(--border-light);
+    line-height: 1.65;
+    background: #f0ede6;
+    font-weight: 300;
+  }
+
+  .job.open .job-summary {
+    background: #edf2fb;
+    color: var(--accent);
+    border-top-color: #c8d8f0;
+  }
+
+  .job-detail {
+    display: none;
+    border-top: 0.5px solid var(--border-light);
+  }
+
+  .job.open .job-detail { display: block; }
+
+  .bullets {
+    padding: 10px 14px;
+    list-style: none;
+  }
+
+  .bullets li {
+    font-size: 11.5px;
+    color: var(--text);
+    line-height: 1.65;
+    margin-bottom: 5px;
+    padding-left: 14px;
+    position: relative;
+    font-weight: 300;
+  }
+
+  .bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--text-faint);
+    font-size: 10px;
+  }
+
+  .bullets li:last-child { margin-bottom: 0; }
+
+  .tech-bar {
+    padding: 8px 14px;
+    border-top: 0.5px solid var(--border-light);
+    background: #e8e5df;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .tech-lbl {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-faint);
+    margin-right: 2px;
+  }
+
+  .tech {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 20px;
+    background: var(--accent-light);
+    color: var(--accent);
+    border: 0.5px solid #c8d8f0;
+  }
+
+  .proj-row {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  .proj-row a { color: var(--accent-mid); text-decoration: none; }
+  .proj-row a:hover { text-decoration: underline; }
+
+  .aside-item {
+    font-size: 11px;
+    color: var(--text);
+    padding: 4px 0;
+    border-bottom: 0.5px solid var(--border-light);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .aside-item:last-child { border-bottom: none; }
+
+  .cert-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    padding: 5px 0;
+    border-bottom: 0.5px solid var(--border-light);
+  }
+
+  .cert-row:last-child { border-bottom: none; }
+
+  .cdot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  .cert-name {
+    font-size: 11px;
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  .cert-sub {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-faint);
+  }
+
+  .edu-block { margin-bottom: 10px; }
+  .edu-block:last-child { margin-bottom: 0; }
+
+  .edu-deg {
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  .edu-school {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  .edu-yr {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-faint);
+  }
+
+  .footer {
+    padding: 12px 36px;
+    border-top: 0.5px solid var(--border-light);
+    background: #f0ede6;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-note {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-faint);
+  }
+
+  .print-btn {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent-mid);
+    background: var(--accent-light);
+    border: 0.5px solid #c8d8f0;
+    border-radius: 6px;
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: background .15s;
+  }
+
+  .print-btn:hover { background: #d8e6f7; }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .page-label, .footer { display: none; }
+    .resume { box-shadow: none; border: none; border-radius: 0; }
+    .job-detail { display: block !important; }
+    .job-summary { display: none; }
+    .chev { display: none; }
+    .top::before { display: none; }
+  }
+
+  @media (max-width: 640px) {
+    .cols { grid-template-columns: 1fr; }
+    .aside { border-top: 0.5px solid var(--border); }
+    .main { padding: 16px 18px; }
+    .top { padding: 20px 18px 16px; }
+    .footer { padding: 12px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <div class="page-label">resume / florence ernestina osei</div>
+
+  <div class="resume">
+
+    <div class="top">
+      <div class="name">Florence Ernestina Osei</div>
+      <div class="headline">IT Infrastructure &amp; Cybersecurity Professional &nbsp;·&nbsp; MS Cybersecurity Candidate &nbsp;·&nbsp; CompTIA A+ · Network+</div>
+      <div class="contacts">
+        <span>Brooklyn, NY</span>
+        <span class="sep">/</span>
+        <span>(646) 637-5431</span>
+        <span class="sep">/</span>
+        <a href="mailto:florence.e.osei@gmail.com">florence.e.osei@gmail.com</a>
+        <span class="sep">/</span>
+        <a href="https://www.linkedin.com/in/florence-ernestina-osei/" target="_blank">LinkedIn</a>
+        <span class="sep">/</span>
+        <a href="https://github.com/pursuit-florence" target="_blank">GitHub</a>
+      </div>
+    </div>
+
+    <div class="cols">
+
+      <div class="main">
+
+        <div class="sec">
+          <div class="sec-title">Profile</div>
+          <div class="profile">Results-driven IT infrastructure and cybersecurity professional with 5+ years of enterprise experience securing and supporting complex technology environments across financial services, healthcare, and logistics industries. Proven track record managing large-scale endpoint fleets, enterprise identity systems, and multi-site IT operations. Currently pursuing MS Cybersecurity and Information Assurance at WGU with a focus on building an independent cybersecurity consulting practice.</div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-title">Work experience</div>
+          <div class="hint">Click any role to expand full description and technologies</div>
+          <div id="jobs"></div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-title">Project</div>
+          <div class="proj-row">
+            <strong>My Recipe App</strong> &mdash; <a href="https://melodic-brioche-951aa4.netlify.app/" target="_blank">Live demo ↗</a> &nbsp;·&nbsp; Recipe search application built with JavaScript and CSS featuring ingredient and keyword search functionality
+          </div>
+        </div>
+
+      </div>
+
+      <div class="aside">
+
+        <div class="sec">
+          <div class="sec-title">Certifications</div>
+          <div class="cert-row">
+            <span class="cdot" style="background:#0f3070;"></span>
+            <div>
+              <div class="cert-name"><a href="https://www.comptia.org/certifications/a" target="_blank" style="color:inherit;text-decoration:none;border-bottom:0.5px solid var(--border);">CompTIA A+</a></div>
+              <div class="cert-sub">CompTIA · Verified</div>
+            </div>
+          </div>
+          <div class="cert-row">
+            <span class="cdot" style="background:#0f3070;"></span>
+            <div>
+              <div class="cert-name"><a href="https://www.comptia.org/certifications/network" target="_blank" style="color:inherit;text-decoration:none;border-bottom:0.5px solid var(--border);">CompTIA Network+</a></div>
+              <div class="cert-sub">CompTIA · Verified</div>
+            </div>
+          </div>
+          <div class="cert-row">
+            <span class="cdot" style="background:#0a5040;"></span>
+            <div>
+              <div class="cert-name"><a href="https://www.comptia.org/certifications/security" target="_blank" style="color:inherit;text-decoration:none;border-bottom:0.5px solid var(--border);">CompTIA Security+</a></div>
+              <div class="cert-sub">CompTIA · In progress</div>
+            </div>
+          </div>
+          <div class="cert-row">
+            <span class="cdot" style="background:#0a5040;"></span>
+            <div>
+              <div class="cert-name"><a href="https://www.wgu.edu/online-it-degrees/cybersecurity-information-assurance-masters-program.html" target="_blank" style="color:inherit;text-decoration:none;border-bottom:0.5px solid var(--border);">MS Cybersecurity</a></div>
+              <div class="cert-sub">WGU · In progress</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-title">Technical skills</div>
+          <div class="aside-item">Azure AD · Microsoft Entra ID</div>
+          <div class="aside-item">Active Directory · Exchange</div>
+          <div class="aside-item">DHCP · DNS · LAN/WAN</div>
+          <div class="aside-item">ServiceNow · Salesforce</div>
+          <div class="aside-item">Windows · macOS · Office 365</div>
+          <div class="aside-item">Epic Systems · ERP platforms</div>
+          <div class="aside-item">JavaScript · React · Node.js</div>
+          <div class="aside-item">MySQL · PostgreSQL</div>
+          <div class="aside-item">HTML · CSS · Google Apps</div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-title">Education</div>
+          <div class="edu-block">
+            <div class="edu-deg">MS Cybersecurity &amp; Information Assurance</div>
+            <div class="edu-school"><a href="https://www.wgu.edu/" target="_blank" style="color:var(--accent-mid);text-decoration:none;border-bottom:0.5px solid var(--border);">Western Governors University</a></div>
+            <div class="edu-yr">In progress — 2026</div>
+          </div>
+          <div class="edu-block">
+            <div class="edu-deg">BS Human Resource Management</div>
+            <div class="edu-school"><a href="https://www.central.edu.gh/" target="_blank" style="color:var(--accent-mid);text-decoration:none;border-bottom:0.5px solid var(--border);">Central University, Ghana</a></div>
+            <div class="edu-yr">Completed</div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sec-title">Training</div>
+          <div class="aside-item"><a href="https://www.pursuit.org/" target="_blank" style="color:var(--accent-mid);text-decoration:none;">Pursuit NY</a> — Software Engineering</div>
+          <div class="aside-item"><a href="https://perscholas.org/" target="_blank" style="color:var(--accent-mid);text-decoration:none;">Per Scholas</a> — Computer Technician</div>
+          <div class="aside-item"><a href="https://www.cognizant.com/" target="_blank" style="color:var(--accent-mid);text-decoration:none;">Cognizant NY</a> — End-User Training</div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <span class="footer-note">florence.e.osei@gmail.com &nbsp;·&nbsp; Brooklyn, NY &nbsp;·&nbsp; 2026</span>
+      <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const jobs = [
+  {
+    role: 'Support Specialist Administrator',
+    company: '<a href="https://gcl.global/" target="_blank">Global Critical Logistics (GCL)</a>',
+    dates: 'Oct 2024 – Present',
+    type: 'Full time',
+    ft: true,
+    summary: 'Administers and secures enterprise IT infrastructure across 5+ locations, managing identity systems, endpoint operations, and IT governance for a global logistics company.',
+    bullets: [
+      'Administered and secured enterprise IT infrastructure across desktop, laptop, printer, and network systems across 5+ locations, managing end-to-end helpdesk operations with focus on rapid resolution and measurable uptime improvements.',
+      'Conducted scheduled onsite visits across all facilities performing hands-on hardware installation, configuration, and preventive maintenance to ensure physical infrastructure remained fully operational and security compliant.',
+      'Architected and deployed hybrid Microsoft Azure Active Directory and Microsoft Entra ID environments, managing identity lifecycle, access controls, and Exchange accounts to enforce security standards organization-wide.',
+      'Led multi-site deployment and configuration of MS Office Professional Suite and ERP platforms, traveling to each location to ensure consistent implementation aligned with organizational security policies.',
+      'Designed and enforced IT governance protocols, authored comprehensive end-user documentation, and delivered onsite onboarding training programs that improved staff technology adoption and reduced repeat helpdesk incidents.',
+      'Served as senior technical resource and escalation point for the IT support team across all facilities, establishing monitoring frameworks and communicating critical system issues to leadership for rapid resolution.',
+      'Managed procurement and full lifecycle of IT hardware and software assets across 5+ locations, coordinating delivery, installation, and inventory tracking to maintain operational continuity.',
+      'Collaborated closely with the Cybersecurity team to maintain and continuously improve IT system security posture across all managed environments.',
+    ],
+    tech: ['Azure AD','Microsoft Entra ID','Exchange','ERP','Office 365','Active Directory','ServiceNow','Windows'],
+  },
+  {
+    role: 'IT Service Desk Analyst',
+    company: '<a href="https://www.cuimc.columbia.edu/" target="_blank">Columbia University Irving Medical Center</a>',
+    dates: 'May 2024 – Oct 2024',
+    type: 'Contract · Prime Staffing',
+    ft: false,
+    summary: 'Delivered high-volume IT support in a demanding medical center environment, maintaining a 94% first-contact resolution rate across Epic Systems, VPN, Office 365, and network connectivity issues.',
+    bullets: [
+      'Resolved complex technical issues including password resets, account management, Epic Systems access, Office 365, VPN connectivity, and network problems using system documentation and structured escalation procedures.',
+      'Maintained a consistently high first-contact resolution rate while supporting clinical staff in a fast-paced, mission-critical healthcare environment requiring strict HIPAA compliance.',
+      'Escalated unresolved infrastructure and security incidents to senior technicians with thorough documentation to enable efficient resolution and minimize clinical workflow disruption.',
+      'Provided onsite support across multiple hospital departments, ensuring IT systems remained available during peak clinical hours.',
+    ],
+    tech: ['Epic Systems','HIPAA','VPN','Office 365','Active Directory','ServiceNow','Network troubleshooting'],
+  },
+  {
+    role: 'Technical Client Support & Web Designer',
+    company: '<a href="https://www.cpasitesolutions.com/" target="_blank">CPASitesSolutions, Winooski US</a>',
+    dates: 'Oct 2023 – Mar 2024',
+    type: 'Contract · ETS Staffing',
+    ft: false,
+    summary: 'Delivered technical support for DNS, domain, and email infrastructure while driving client service adoption and website usability improvements for a CPA-focused web solutions company.',
+    bullets: [
+      'Provided expert technical support for domain management, DNS configurations, and email infrastructure issues, consistently exceeding client satisfaction benchmarks.',
+      'Drove measurable increases in client service adoption by educating clients on platform capabilities and identifying strategic upsell opportunities aligned with their business needs.',
+      'Enhanced website usability across client portfolios by implementing targeted design modifications and UX improvements based on client feedback and usage analysis.',
+    ],
+    tech: ['DNS','Domain management','Email infrastructure','HTML','CSS','JavaScript','Client support'],
+  },
+  {
+    role: 'Help Desk Specialist',
+    company: '<a href="https://www.mtxb2b.com/" target="_blank">MTX Group Inc, Austin TX</a>',
+    dates: 'Jan 2021 – Feb 2022',
+    type: 'Full time · Multiple shifts',
+    ft: true,
+    summary: 'Managed 40–50 daily tickets across multiple shifts, exceeding SLAs while resolving diverse technology issues across iPad, computer, and network environments at POD sites.',
+    bullets: [
+      'Managed 40–50 daily helpdesk tickets across multiple shifts, consistently resolving issues efficiently and exceeding defined SLA targets.',
+      'Optimized device and network connectivity at POD sites, streamlining ticketing processes to improve team throughput and response times.',
+      'Troubleshot and resolved a broad range of technology issues including iPads, laptops, computers, and internet connectivity across distributed site locations.',
+    ],
+    tech: ['Ticketing systems','iOS','Windows','Network troubleshooting','SLA management','Remote support'],
+  },
+  {
+    role: 'PC Lifecycle Management Support Technician',
+    company: '<a href="https://www.blackrock.com/" target="_blank">BlackRock Inc, Manhattan NY</a>',
+    dates: 'Feb 2021 – Jan 2022',
+    type: 'Contract · Network CPR Inc',
+    ft: false,
+    summary: 'Managed end-to-end PC lifecycle for 1,200+ devices across BlackRock Manhattan headquarters and multiple satellite offices, hardening workstation builds to meet financial services security standards.',
+    bullets: [
+      'Managed full PC lifecycle including imaging, deployment, hardware repair, upgrades, and asset retirement across Manhattan HQ and multiple satellite offices.',
+      'Configured and hardened workstation builds to meet financial services security standards including endpoint protection, encryption policies, and software controls.',
+      'Improved operational efficiency by implementing comprehensive inventory documentation and multi-location reporting processes.',
+      'Provided onsite support for network, server, and hardware infrastructure projects and delivered hands-on user training for new equipment and software rollouts.',
+    ],
+    tech: ['PC imaging','SCCM','Asset management','Active Directory','Endpoint hardening','Windows','Hardware deployment'],
+  },
+  {
+    role: 'Technical Support & Epic Applications Analyst',
+    company: '<a href="https://www.nyp.org/" target="_blank">NY Presbyterian Hospital</a> · <a href="https://weill.cornell.edu/" target="_blank">Weill Cornell Medicine</a>',
+    dates: 'Aug 2020 – Dec 2020',
+    type: 'Contract · Baldwin Technology',
+    ft: false,
+    summary: 'Maintained peak operation for 22,000+ devices across NY Presbyterian Hospital campuses and ensured seamless Epic EHR integration for 11,000+ systems across Weill Cornell Medicine sites.',
+    bullets: [
+      'NY Presbyterian Hospital: Maintained peak operation for 22,000+ devices across multiple hospital sites through proactive maintenance, user support, and lifecycle management.',
+      'Streamlined service delivery using ServiceNow to manage tickets, prioritize critical tasks, and consistently meet SLAs across high-volume clinical environments.',
+      'Facilitated smooth Epic Go Live system transitions by conducting technical rehearsals and providing real-time onsite support during critical deployment windows.',
+      'Weill Cornell Medicine: Ensured seamless Epic EHR integration across 11,000+ systems spanning hospitals, education facilities, and research centers through comprehensive workstation and peripheral testing.',
+      'Collaborated with technicians to analyze test results and expedite problem resolution, leading to faster issue identification and significantly reduced system downtime.',
+      'Optimized workstation logistics across diverse multi-site testing environments by reviewing project documentation and implementing workflow improvements.',
+    ],
+    tech: ['Epic Systems','ServiceNow','HIPAA','Endpoint management','Windows','Printer support','Go Live deployment'],
+  },
+];
+
+let open = null;
+
+function render() {
+  const el = document.getElementById('jobs');
+  el.innerHTML = jobs.map((j, i) => {
+    const isOpen = open === i;
+    return `<div class="job${isOpen ? ' open' : ''}" id="job-${i}">
+      <div class="job-top" onclick="tog(${i})">
+        <div class="r1">
+          <span class="job-role">${j.role}</span>
+          <span class="badge ${j.ft ? 'badge-ft' : 'badge-ct'}">${j.type}</span>
+          <span class="job-dates">${j.dates}</span>
+          <span class="chev">&#9660;</span>
+        </div>
+        <div class="r2"><span class="job-co">${j.company}</span></div>
+      </div>
+      <div class="job-summary">${j.summary}</div>
+      <div class="job-detail">
+        <ul class="bullets">${j.bullets.map(b => `<li>${b}</li>`).join('')}</ul>
+        <div class="tech-bar">
+          <span class="tech-lbl">Technologies:</span>
+          ${j.tech.map(t => `<span class="tech">${t}</span>`).join('')}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function tog(i) {
+  open = open === i ? null : i;
+  render();
+  if (open !== null) {
+    setTimeout(() => {
+      document.getElementById('job-' + i).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 50);
+  }
+}
+
+render();
+</script>
+</body>
+</html>
